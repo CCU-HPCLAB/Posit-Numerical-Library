@@ -1,0 +1,3 @@
+[submodule "3rd_party/universal"]
+	path = 3rd_party/universal
+	url = https://github.com/stillwater-sc/universal.git
