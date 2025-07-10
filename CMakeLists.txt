@@ -1,3 +1,6 @@
+cmake_minimum_required(VERSION 3.14)
+project(PositWrapper LANGUAGES CXX)
+
 if (CMAKE_SOURCE_DIR STREQUAL PROJECT_SOURCE_DIR)
   cmake_minimum_required(VERSION 3.15)
   project(positWrapper)
@@ -22,6 +25,9 @@ find_package(pybind11 REQUIRED)
 # Add the library
 add_library(positWrapperC SHARED src/positWrapperC.cpp)
 add_library(positWrapperPy MODULE src/positWrapperPybind.cpp)
+
+set_target_properties(positWrapperC PROPERTIES LINKER_LANGUAGE CXX)
+set_target_properties(positWrapperPy PROPERTIES LINKER_LANGUAGE CXX)
 
 target_include_directories(positWrapperC PUBLIC ${UNIVERSAL_INCLUDE} ${CMAKE_CURRENT_SOURCE_DIR}/include)
 target_include_directories(positWrapperPy PRIVATE ${UNIVERSAL_INCLUDE} ${CMAKE_CURRENT_SOURCE_DIR}/include)
